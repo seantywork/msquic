@@ -84,8 +84,8 @@ jobs:
           { plat: "linux", os: "ubuntu-24.04", arch: "x64", tls: "quictls", xdp: "-UseXdp" },
           { plat: "linux", os: "ubuntu-22.04", arch: "x64", tls: "openssl" },
           { plat: "linux", os: "ubuntu-24.04", arch: "x64", tls: "openssl", xdp: "-UseXdp" },
-          { plat: "macos", os: "macos-13", arch: "universal", tls: "quictls" },
-          { plat: "macos", os: "macos-13", arch: "universal", tls: "openssl" },
+          { plat: "macos", os: "macos-15", arch: "universal", tls: "quictls" },
+          { plat: "macos", os: "macos-15", arch: "universal", tls: "openssl" },
         ]
     runs-on: ${{ matrix.vec.os }}
     steps:
@@ -95,7 +95,7 @@ jobs:
       shell: pwsh
       run: scripts/prepare-machine.ps1 -ForTest ${{ matrix.vec.xdp }}
     - name: Download Build Artifacts
-      uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0
+      uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53
       with:
         name: Debug-${{ matrix.vec.plat }}-${{ matrix.vec.os }}-${{ matrix.vec.arch }}-${{ matrix.vec.tls }}${{ matrix.vec.xdp }}
         path: artifacts
